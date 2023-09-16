@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 void main() => runApp(MyApp());
 
 class Person {
@@ -37,28 +38,24 @@ class Person {
   }
 }
 
-
-
-
 class MyApp extends StatelessWidget {
   final List<Person> persons = [];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Activity Tracker',
+      title: 'Track Activity',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:HomePage(persons)
+      home: HomePage(persons),
     );
-
-
   }
 }
 
 class HomePage extends StatefulWidget {
   final List<Person> persons;
+
   HomePage(this.persons);
 
   @override
@@ -123,8 +120,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
         centerTitle: true,
+        backgroundColor: Colors.orange,
         title: Text('Track Activity'),
       ),
       body: SingleChildScrollView(
@@ -137,6 +134,7 @@ class _HomePageState extends State<HomePage> {
                 'Add a New Person:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              SizedBox(height: 5,),
               Form(
                 key: _formKey,
                 child: Column(
@@ -150,7 +148,8 @@ class _HomePageState extends State<HomePage> {
                         }
                         return null;
                       },
-                    ),SizedBox(height: 2,),
+                    ),
+                    SizedBox(height: 5,),
                     TextFormField(
                       controller: _ageController,
                       decoration: InputDecoration(labelText: 'Age',border: OutlineInputBorder()),
@@ -162,6 +161,7 @@ class _HomePageState extends State<HomePage> {
                         return null;
                       },
                     ),
+                    SizedBox(height: 5,),
                     TextFormField(
                       controller: _heightController,
                       decoration: InputDecoration(labelText: 'Height (cm)',border: OutlineInputBorder()),
@@ -173,6 +173,7 @@ class _HomePageState extends State<HomePage> {
                         return null;
                       },
                     ),
+                    SizedBox(height: 5,),
                     TextFormField(
                       controller: _weightController,
                       decoration: InputDecoration(labelText: 'Weight (kg)',border: OutlineInputBorder()),
@@ -184,6 +185,7 @@ class _HomePageState extends State<HomePage> {
                         return null;
                       },
                     ),
+                    SizedBox(height: 5,),
                     Row(
                       children: [
                         Text('Wake Up Time:'),
@@ -254,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: 16),
-              ElevatedButton(style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.orange)),
+              ElevatedButton(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange)),
                 onPressed: _addPerson,
                 child: Text('Add Person'),
               ),
@@ -331,5 +333,3 @@ class PersonDetailPage extends StatelessWidget {
     );
   }
 }
-
-
